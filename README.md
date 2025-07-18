@@ -20,13 +20,10 @@ Each folder provides a self-contained environment for local development, indepen
 Navigate into the desired service folder (e.g., `postgres/`) and run:
 
 ```bash
-bash
-SalinEdit
 make start     # Start the container if not running
 make stop      # Stop the container (keeps volumes)
 make clean     # Stop and remove container and volumes
 make init      # Run optional initialization steps (e.g., create DB or buckets)
-
 ```
 
 ---
