@@ -28,9 +28,3 @@ Place an `init.sql` file in this directory to run custom SQL during `make init`.
 - Data is persisted in Docker volume: `${VOLUME_NAME}`
 - Port and other settings can be overridden via environment variables
 - This module is designed to work standalone or as part of a larger `dev-containers` setup
-
----
-
-## 📜 License
-
-MIT
