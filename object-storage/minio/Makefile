@@ -1,13 +1,13 @@
 .PHONY: start stop clean init
 
-CONTAINER_NAME ?= minio
-IMAGE_NAME ?= minio/minio
-IMAGE_TAG ?= latest
-VOLUME_NAME ?= minio-data
-PORT_HTTP ?= 9000
-PORT_CONSOLE ?= 9001
-MINIO_ROOT_USER ?= minio
-MINIO_ROOT_PASSWORD ?= minio123
+CONTAINER_NAME=minio
+IMAGE_NAME=minio/minio
+IMAGE_TAG=latest
+VOLUME_NAME=minio-data
+PORT_HTTP=9000
+PORT_CONSOLE=9001
+MINIO_ROOT_USER=minio
+MINIO_ROOT_PASSWORD=minio123
 
 start:
 	@echo "🚀 Starting MinIO container..."
