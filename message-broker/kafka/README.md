@@ -1,8 +1,4 @@
-## 📁 Volume
-
-All MinIO data is stored inside the Docker volume `${VOLUME_NAME}`.
-
-# **🚀 Kafka Dev Container (KRaft Mode)**
+# **🚀 Kafka Dev Container**
 
 This service provides a standalone Apache Kafka container for development and testing without Zookeeper.
 
