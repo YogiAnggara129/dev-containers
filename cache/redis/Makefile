@@ -8,14 +8,19 @@ VOLUME_NAME = redis-data
 PASSWORD = redispass
 
 start:
-	@echo "🚀 Starting Redis container..."
-	@docker run -d \
-		--name $(CONTAINER_NAME) \
-		-p $(PORT):6379 \
-		-v $(VOLUME_NAME):/data \
-		-e REDIS_PASSWORD=$(PASSWORD) \
-		--restart unless-stopped \
-		$(IMAGE_NAME):$(IMAGE_TAG)
+	@if [ "$$(docker ps -aq -f name=$(CONTAINER_NAME))" ]; then \
+		echo "Container '$(CONTAINER_NAME)' already exists. Starting it..."; \
+		docker start $(CONTAINER_NAME); \
+	else \
+		echo "Creating and starting new container '$(CONTAINER_NAME)'..."; \
+		docker run -d \
+			--name $(CONTAINER_NAME) \
+			-p $(PORT):6379 \
+			-v $(VOLUME_NAME):/data \
+			-e REDIS_PASSWORD=$(PASSWORD) \
+			--restart unless-stopped \
+			$(IMAGE_NAME):$(IMAGE_TAG)
+	fi
 
 stop:
 	@echo "🛑 Stopping Redis container..."

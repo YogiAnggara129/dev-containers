@@ -10,16 +10,22 @@ MINIO_ROOT_USER=minio
 MINIO_ROOT_PASSWORD=minio123
 
 start:
-	@echo "🚀 Starting MinIO container..."
-	docker run -d \
-		--name $(CONTAINER_NAME) \
-		-p $(PORT_HTTP):9000 \
-		-p $(PORT_CONSOLE):9001 \
-		-e MINIO_ROOT_USER=$(MINIO_ROOT_USER) \
-		-e MINIO_ROOT_PASSWORD=$(MINIO_ROOT_PASSWORD) \
-		-v $(VOLUME_NAME):/data \
-		--restart unless-stopped \
-		$(IMAGE_NAME):$(IMAGE_TAG) server /data --console-address ":9001"
+	
+	@if [ "$$(docker ps -aq -f name=$(CONTAINER_NAME))" ]; then \
+		echo "Container '$(CONTAINER_NAME)' already exists. Starting it..."; \
+		docker start $(CONTAINER_NAME); \
+	else \
+		echo "Creating and starting new container '$(CONTAINER_NAME)'..."; \
+		docker run -d \
+			--name $(CONTAINER_NAME) \
+			-p $(PORT_HTTP):9000 \
+			-p $(PORT_CONSOLE):9001 \
+			-e MINIO_ROOT_USER=$(MINIO_ROOT_USER) \
+			-e MINIO_ROOT_PASSWORD=$(MINIO_ROOT_PASSWORD) \
+			-v $(VOLUME_NAME):/data \
+			--restart unless-stopped \
+			$(IMAGE_NAME):$(IMAGE_TAG) server /data --console-address ":9001"
+	fi
 
 stop:
 	@echo "🛑 Stopping and removing MinIO container..."
