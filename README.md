@@ -47,3 +47,9 @@ make init      # Run optional initialization steps (e.g., create DB or buckets)
 ---
 
 Let me know if you want to add badges, usage examples, or a `CONTRIBUTING.md` later!
+
+---
+
+## 📜 License
+
+This project and all its modules are licensed under the [MIT License](./LICENSE).
