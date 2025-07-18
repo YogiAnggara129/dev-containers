@@ -29,8 +29,6 @@ To create your desired topics, **edit the `make init` task directly in the `
 
 Example (already included):
 
-make
-
 ```makefile
 init:
 	@echo "📦 Initializing Kafka topics..."
@@ -51,8 +49,6 @@ On Windows, you need to add the container name to your hosts file:
 
 1. Open **`C:\Windows\System32\drivers\etc\hosts`** as Administrator
 2. Add this line:
-    
-    text
     
     ```bash
     127.0.0.1 kafka
