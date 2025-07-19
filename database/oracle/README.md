@@ -29,6 +29,10 @@ Production-ready Oracle 21c Express Edition container with customizable initiali
     **`$(VOLUME_PATH)/oradata/`**
     
 - **Backup recommendation**:
+    
+    ```bash
+    docker exec oracle-db expdp system/password schemas=APP_ADMIN directory=DATA_PUMP_DIR dumpfile=backup.dmp
+    ```
 
 ---
 
